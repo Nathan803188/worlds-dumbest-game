@@ -1,0 +1,750 @@
+/* =============================================================
+   worldsdumbestgame.com â€” Shared Stylesheet
+   Title: Dawning of a New Day
+   Body/UI: Patrick Hand (clean, legible, graph-paper feel)
+   ============================================================= */
+
+/* â”€â”€ Tokens â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+:root {
+  --navy:        #000F55;
+  --pink:        #ff1493;
+  --card-bg:     rgba(255, 255, 255, 0.82);  /* was 0.45 â€” looked blue on graph paper */
+  --card-border: rgba(0, 15, 85, 0.13);
+  --rule:        rgba(0, 15, 85, 0.15);
+  --f-title:     'Dawning of a New Day', cursive;
+  --f-body:      'Patrick Hand', cursive;
+  --max:         520px;
+  --r:           14px;
+}
+
+/* â”€â”€ Reset â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* â”€â”€ Page â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+   Graph paper background generated via CSS â€” no image dependency
+   â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+body {
+  background-color: #e8f0f8;
+  background-image:
+    linear-gradient(rgba(0, 15, 85, 0.06) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 15, 85, 0.06) 1px, transparent 1px),
+    linear-gradient(rgba(0, 15, 85, 0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 15, 85, 0.025) 1px, transparent 1px);
+  background-size: 80px 80px, 80px 80px, 16px 16px, 16px 16px;
+  background-position: -1px -1px, -1px -1px, -1px -1px, -1px -1px;
+  font-family: var(--f-title);
+  color: var(--navy);
+  min-height: 100vh;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-touch-callout: none;  /* prevents long-press save image on iOS */
+}
+
+/* â”€â”€ Screen â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+#screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: clamp(16px, 3vw, 32px) clamp(16px, 4vw, 32px) 72px;
+}
+
+#wrapper {
+  width: 100%;
+  max-width: var(--max);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* â”€â”€ Links â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+a           { color: var(--pink); text-decoration: none; }
+a:hover     { text-decoration: underline; text-underline-offset: 3px; }
+a.alt       { color: var(--navy); text-decoration: underline; text-underline-offset: 3px; }
+a.alt:hover { color: var(--pink); }
+
+/* â”€â”€ Title â€” forced single line â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+h1 {
+  font-family: var(--f-title);
+  /* Scale down until it fits on one line */
+  font-size: clamp(1.8rem, 6.5vw, 3.8rem);
+  font-weight: normal;
+  line-height: 1.1;
+  text-align: center;
+  white-space: nowrap;
+  margin-bottom: 10px;
+  color: var(--navy);
+}
+h1 a        { color: var(--navy); }
+h1 a:hover  { color: var(--pink); text-decoration: none; }
+
+/* â”€â”€ Subtitle â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.subtitle {
+  font-family: var(--f-body);
+  font-size: clamp(1rem, 3vw, 1.4rem);
+  text-align: center;
+  color: var(--navy);
+  opacity: 0.8;
+  line-height: 1.25;
+}
+
+/* â”€â”€ Hold area â€” button + timer stacked â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+#hold-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  margin-top: clamp(16px, 3vw, 24px);
+  margin-bottom: 24px;
+}
+
+/* â”€â”€ Timer â€” in flow above button, fixed height so layout never shifts â”€â”€ */
+#timer {
+  font-family: var(--f-body);
+  font-size: clamp(3rem, 11vw, 3.8rem);
+  font-weight: bold;
+  color: var(--pink);
+  line-height: 1;
+  letter-spacing: 2px;
+  text-align: center;
+  height: clamp(48px, 11vw, 61px);  /* matches font-size Ã— line-height â€” always reserved */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+#timer.visible { opacity: 1; }
+
+#hold {
+  width: 140px;
+  height: 158px;
+  margin-top: 0;
+  background: url(/i/button-large.png) center/contain no-repeat;
+  cursor: pointer;
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.12s ease;
+  flex-shrink: 0;
+}
+#hold:hover:not(.pressed) {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+#hold.pressed {
+  background-image: url(/i/button-large-down.png);
+  transform: scale(0.91);
+  filter: brightness(0.92);
+  transition: transform 0.08s cubic-bezier(0.25, 0.46, 0.45, 0.94), filter 0.08s ease;
+}
+
+/* â”€â”€ Game messages â€” shown after button disappears â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.game-msg {
+  font-family: var(--f-body);
+  font-size: clamp(1.9rem, 6.5vw, 2.4rem);  /* bigger on mobile */
+  line-height: 1.4;
+  text-align: center;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.game-msg:empty { margin: 0; }
+.game-msg a { color: var(--pink); }
+
+/* Initials form */
+.initials-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+.ln-initials-form {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 10px;
+}
+input.initials {
+  font-family: var(--f-body);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--navy);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid var(--navy);
+  width: 58px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  outline: none;
+  padding: 2px 0;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-user-select: text;
+  user-select: text;
+}
+input.ln-initials {
+  font-family: var(--f-body);
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--navy);
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  border-bottom: 2px solid var(--navy);
+  width: 58px;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 5px;
+  outline: none;
+  padding: 2px 0;
+  -webkit-appearance: none;
+  appearance: none;
+  -webkit-user-select: text;
+  user-select: text;
+}
+.btn-submit {
+  font-family: var(--f-body);
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--navy);
+  background: transparent;
+  border: 2px solid var(--navy);
+  border-radius: 20px;
+  padding: 5px 20px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.btn-submit:hover { background: var(--navy); color: #fff; }
+.ln-btn-submit {
+  font-family: var(--f-body);
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--navy);
+  background: transparent;
+  border: 2px solid var(--navy);
+  border-radius: 20px;
+  padding: 5px 20px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.ln-btn-submit:hover { background: var(--navy); color: #fff; }
+.btn-skip {
+  font-family: var(--f-body);
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: var(--navy);
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: 20px;
+  padding: 5px 12px;
+  cursor: pointer;
+  opacity: 0.45;
+  transition: opacity 0.15s;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+.btn-skip:hover { opacity: 0.8; }
+
+/* â”€â”€ Leaderboards â€” index.php â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.scores-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.score-board {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--r);
+  padding: 16px 18px;
+}
+
+/* (ln-stats-card scores are in the separate scores-wrap, no override needed) */
+
+.score-board h3 {
+  font-family: var(--f-body);
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-bottom: 10px;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.score-row {
+  display: grid;
+  grid-template-columns: 22px 48px 1fr;
+  gap: 2px;
+  align-items: baseline;
+  font-family: var(--f-body);
+  font-size: 1.4rem;
+  line-height: 1.85;
+  color: var(--navy);
+}
+.score-rank { opacity: 0.38; font-size: 1.4rem; }
+.score-init { font-weight: bold; padding-left: 4px; }
+.score-time { color: var(--pink); font-weight: bold; }
+
+/* â”€â”€ Leaderboards â€” dumbester.php â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.ln-scores-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.ln-score-board {
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--r);
+  padding: 16px 18px;
+}
+
+.ln-score-board h3 {
+  font-family: var(--f-body);
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-bottom: 10px;
+  color: var(--navy);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.ln-score-row {
+  display: grid;
+  grid-template-columns: 22px 48px 1fr;
+  gap: 2px;
+  align-items: baseline;
+  font-family: var(--f-body);
+  font-size: 1.4rem;
+  line-height: 1.85;
+  color: var(--navy);
+}
+.ln-score-rank { opacity: 0.38; font-size: 1.4rem; }
+.ln-score-init { font-weight: bold; padding-left: 4px; }
+.ln-score-time { color: var(--pink); font-weight: bold; }
+
+/* â”€â”€ Rule â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.rule {
+  width: 100%;
+  border: none;
+  border-top: 1.5px dashed var(--rule);
+  margin: 20px 0;
+}
+
+/* â”€â”€ Ad â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+#ad { width: 100%; min-height: 90px; margin: 8px 0 24px; }
+
+/* â”€â”€ Footer â€” clear, readable, full opacity â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+#sitenav {
+  font-family: var(--f-body);
+  font-size: 1.4rem;
+  font-weight: bold;
+  text-align: center;
+  color: var(--navy);
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+#sitenav a {
+  color: var(--pink);
+  text-decoration: underline;
+  font-size: 1.4rem;
+}
+#sitenav a:hover { text-decoration: underline; text-underline-offset: 3px; }
+#sitenav a:hover { opacity: 0.75; }
+
+.copyright {
+  font-family: var(--f-body);
+  font-size: 1rem;
+  text-align: center;
+  color: var(--navy);
+  opacity: 0.8;
+  line-height: 2;
+}
+.copyright a.alt {
+  color: var(--navy);
+  opacity: 1;
+  text-decoration: none;
+}
+.copyright a.alt:hover { text-decoration: underline; }
+
+/* â”€â”€ Utilities â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.hidden { display: none !important; }
+
+/* â”€â”€ GDPR â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+#GDPR {
+  width: 100%;
+  background: var(--navy);
+  padding: 14px 20px;
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  border-radius: 0 0 10px 10px;
+}
+#GDPR p      { color: #fff; font-family: var(--f-body); font-size: 0.9rem; }
+#GDPR a      { color: #fff; text-decoration: underline; }
+#GDPR button {
+  background: var(--pink); border: none; color: #fff;
+  font-family: var(--f-body); font-weight: bold; font-size: 0.88rem;
+  padding: 6px 16px; border-radius: 20px; cursor: pointer;
+  white-space: nowrap; flex-shrink: 0;
+}
+
+/* â”€â”€ Lowest Number specific â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.card, .ad-card {
+  width: 100%;
+  background: var(--card-bg);
+  border: 1.5px solid var(--card-border);
+  border-radius: var(--r);
+  padding: clamp(16px, 4vw, 24px);
+  margin-bottom: 16px;
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
+}
+
+/* (record-label, record-number, stat-val, stat-lbl now scoped inside #ln-stats-card â€” see below) */
+
+/* â”€â”€ LN game area â€” fixed, never changes size â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+#ln-game {
+  position: relative;
+  width: 100%;
+  height: calc(clamp(113px, 25vw, 158px) + 50px); /* stage height + lose message zone */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 50px;      /* reserve bottom for lose message */
+  margin-top: clamp(16px, 4vw, 40px);
+  margin-bottom: clamp(16px, 4vw, 40px);
+}
+
+/* â”€â”€ Lose / win messages â€” in normal flow, centered â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+#ln-lose {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+  font-family: var(--f-body);
+  font-size: clamp(1.9rem, 4vw, 2.4rem);
+  line-height: 1.3;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+#ln-lose.ln-msg-lose {
+  opacity: 1;
+  pointer-events: auto;
+}
+#ln-lose a { color: var(--pink); white-space: nowrap; }
+
+/* â”€â”€ Win zone â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+#ln-win {
+  width: 100%;
+  text-align: center;
+}
+#ln-win a { color: var(--pink); white-space: nowrap; }
+
+/* â”€â”€ Stats card â€” current low + totals â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+#ln-stats-card {
+  margin-bottom: 12px;
+  padding: 16px clamp(16px, 4vw, 24px);
+}
+
+/* Primary stat: Current Low Number â€” full-width centered, anchors the card */
+.ln-stat-primary {
+  text-align: center;
+  padding-bottom: 12px;
+  margin-bottom: 12px;
+  border-bottom: 1.5px dashed var(--rule);
+}
+.ln-stat-primary .record-label {
+  font-family: var(--f-body);
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  color: var(--navy);
+  opacity: 0.45;
+  margin-bottom: 4px;
+}
+.ln-stat-primary .record-number {
+  font-family: var(--f-body);
+  font-weight: bold;
+  font-size: clamp(2.6rem, 10vw, 4rem);
+  color: var(--pink);
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+/* Secondary stats row: Total + Remaining side by side */
+.ln-stats-secondary {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+}
+.ln-stat-block {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 0 12px;
+}
+.ln-stat-block + .ln-stat-block {
+  border-left: 1.5px solid var(--card-border);
+}
+.ln-stat-block .stat-val {
+  font-family: var(--f-body);
+  font-size: clamp(1.3rem, 4vw, 1.7rem);
+  font-weight: bold;
+  color: var(--pink);
+  line-height: 1.1;
+  display: block;
+}
+.ln-stat-block .stat-lbl {
+  font-family: var(--f-body);
+  font-size: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--navy);
+  opacity: 0.45;
+  display: block;
+  margin-top: 3px;
+}
+
+/* Fixed stage â€” button and number display overlap here, same size */
+#ln-stage {
+  position: relative;
+  width: clamp(100px, 22vw, 140px);
+  height: clamp(113px, 25vw, 158px);
+}
+
+/* Image push button â€” absolutely positioned in stage */
+#ln-hold {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background: url(/i/button-large.png) center/contain no-repeat;
+  cursor: pointer;
+  touch-action: none;
+  -webkit-touch-callout: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  transition: transform 0.12s cubic-bezier(0.34, 1.56, 0.64, 1),
+              filter 0.12s ease,
+              opacity 0.2s ease;
+  opacity: 1;
+}
+#ln-hold:hover:not(.pressed) {
+  transform: scale(1.03);
+  filter: brightness(1.05);
+}
+#ln-hold.pressed {
+  background-image: url(/i/button-large-down.png);
+  transform: scale(0.91);
+  filter: brightness(0.92);
+  transition: transform 0.08s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              filter 0.08s ease;
+}
+#ln-hold.hide {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+
+/* Number display â€” escapes ln-stage, positions relative to ln-game */
+#ln-number-display {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 26px;   /* matches padding-bottom on #ln-game â€” fills button zone */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease;
+}
+#ln-number-display.show {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.ln-number {
+  font-family: var(--f-body);
+  font-weight: bold;
+  font-size: clamp(3rem, 11vw, 3.8rem);
+  line-height: 1;
+  opacity: 0;
+  transition: color 0.3s;
+  font-variant-numeric: tabular-nums;
+  display: block;
+}
+/* Rolling state: animate from invisible to full opacity over the roll duration */
+.ln-number.ln-rolling {
+  color: var(--navy);
+  animation: rollFadeIn 1.3s ease-out forwards;
+}
+@keyframes rollFadeIn {
+  0%   { opacity: 0; }
+  20%  { opacity: 0.15; }
+  60%  { opacity: 0.5; }
+  100% { opacity: 1; }
+}
+.ln-number.ln-winner  { opacity: 1; color: var(--pink); animation: none; }
+.ln-number.ln-loser   { opacity: 1; color: var(--navy); animation: none; }
+
+#ln-result {
+  font-family: var(--f-body);  /* Patrick Hand â€” fits on one line */
+  font-size: clamp(0.95rem, 2.8vw, 1.15rem);
+  font-weight: bold;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.35s;
+  line-height: 1.2;
+  letter-spacing: 0.2px;
+}
+#ln-result.ln-result-visible { display: block; opacity: 1; }
+#ln-result.outcome-today   { color: var(--navy); }
+#ln-result.outcome-alltime { color: var(--pink); }
+#ln-result.outcome-one     { color: var(--pink); }
+
+/* (ln-lose and ln-win styles now above, in normal flow) */
+
+/* â”€â”€ Outcome prompt â€” block hand, above initials input â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.ln-outcome-prompt {
+  font-family: var(--f-body);
+  font-size: clamp(1.1rem, 3.5vw, 1.4rem);
+  font-weight: bold;
+  line-height: 1.35;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+/* (lose message styles now in #ln-lose above) */
+
+/* â”€â”€ Play again after winning â€” matches WDG .game-msg â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.ln-play-again {
+  font-family: var(--f-body);
+  font-size: clamp(1.9rem, 6.5vw, 2.4rem);  /* match game-msg */
+}
+.ln-play-again a { color: var(--pink); white-space: nowrap; }
+/* Keep "Play again?" together on all game messages */
+.game-msg a { white-space: nowrap; }
+
+/* â”€â”€ No scores yet message â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.ln-no-scores {
+  font-family: var(--f-body);
+  font-size: 0.85rem;
+  opacity: 0.38;
+  margin: 4px 0 0;
+}
+
+/* â”€â”€ Pop animation â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+@keyframes pop {
+  0%   { transform: scale(1); }
+  35%  { transform: scale(1.12); }
+  100% { transform: scale(1); }
+}
+.pop { animation: pop 0.3s ease-out; }
+
+/* â”€â”€ New score flash â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+@keyframes scoreFlash {
+  0%   { background: rgba(255, 20, 147, 0.0); }
+  20%  { background: rgba(255, 20, 147, 0.25); }
+  40%  { background: rgba(255, 20, 147, 0.0); }
+  60%  { background: rgba(255, 20, 147, 0.25); }
+  80%  { background: rgba(255, 20, 147, 0.0); }
+  100% { background: rgba(255, 20, 147, 0.12); }
+}
+.score-row.new-score {
+  border-radius: 4px;
+  padding: 0 4px;
+  margin: 0 -4px;
+}
+.score-row.score-flash {
+  animation: scoreFlash 1.2s ease-in-out forwards;
+}
+.ln-score-row.ln-new-score {
+  border-radius: 4px;
+  padding: 0 4px;
+  margin: 0 -4px;
+}
+.ln-score-row.ln-score-flash {
+  animation: scoreFlash 1.2s ease-in-out forwards;
+}
+
+/* â”€â”€ Ads â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+.ln-ad {
+	min-height: 90px;
+	width: 100%;
+}
+.ad {
+	min-height: 90px;
+	width: 100%;
+}
+/* â”€â”€ Various â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+
+.pink {
+	color: var(--pink);
+	font-family: var(--f-body);
+	font-size: clamp(1.2rem, 5.2vw, 3rem);
+	font-weight: normal;
+	letter-spacing: -1px;
+
+}
+
+/* â”€â”€ Responsive â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+@media (max-width: 480px) {
+  h1               { font-size: clamp(1.5rem, 8vw, 2.4rem); }
+  /* index leaderboard */
+  .scores-wrap     { gap: 8px; }
+  .score-board     { padding: 12px 10px; }
+  .score-board h3  { font-size: 0.72rem; margin-bottom: 6px; }
+  .score-row       { font-size: 0.82rem; line-height: 1.7; grid-template-columns: 18px 36px 1fr; }
+  .score-rank      { font-size: 0.72rem; }
+  /* dumbester leaderboard */
+  .ln-scores-wrap  { gap: 8px; }
+  .ln-score-board  { padding: 12px 10px; }
+  .ln-score-board h3 { font-size: 0.72rem; margin-bottom: 6px; }
+  .ln-score-row    { font-size: 0.82rem; line-height: 1.7; grid-template-columns: 18px 36px 1fr; }
+  .ln-score-rank   { font-size: 0.72rem; }
+  .stats-row       { gap: 24px; }
+  .card            { padding: 16px; }
+  .game-msg        { font-size: clamp(1.3rem, 5vw, 1.8rem); }
+  #ln-game         { padding-bottom: 50px; height: auto; min-height: calc(clamp(113px, 25vw, 158px) + 50px); }
+  #ln-game.ln-win-form { height: auto; padding-bottom: 0; }
+  #ln-game.ln-win-form #ln-lose { position: relative; bottom: auto; margin-top: 12px; }
+  .ad-card {
+	  width: 100%;
+	  background: none;
+	  border: none;
+	  padding: 0;
+	  backdrop-filter: unset;
+	  -webkit-backdrop-filter: unset;
+	}
+
+}
